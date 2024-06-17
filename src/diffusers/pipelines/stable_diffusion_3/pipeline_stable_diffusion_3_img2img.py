@@ -25,6 +25,7 @@ from transformers import (
 )
 
 from ...image_processor import PipelineImageInput, VaeImageProcessor
+from ...loaders import FromSingleFileMixin, SD3LoraLoaderMixin
 from ...models.autoencoders import AutoencoderKL
 from ...models.transformers import SD3Transformer2DModel
 from ...schedulers import FlowMatchEulerDiscreteScheduler
@@ -145,10 +146,10 @@ def retrieve_timesteps(
     return timesteps, num_inference_steps
 
 
-class StableDiffusion3Img2ImgPipeline(DiffusionPipeline):
+class StableDiffusion3Img2ImgPipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromSingleFileMixin):
     r"""
     Args:
-        transformer ([`SD3Transformer2DModel`]):
+        transformer, SD3LoraLoaderMixin, FromSingleFileMixin): ([`SD3Transformer2DModel`]):
             Conditional Transformer (MMDiT) architecture to denoise the encoded image latents.
         scheduler ([`FlowMatchEulerDiscreteScheduler`]):
             A scheduler to be used in combination with `transformer` to denoise the encoded image latents.
