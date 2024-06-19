@@ -35,6 +35,9 @@ if TYPE_CHECKING or DIFFUSERS_SLOW_IMPORT:
     else:
         from .pipeline_stable_diffusion_3 import StableDiffusion3Pipeline
         from .pipeline_stable_diffusion_3_img2img import StableDiffusion3Img2ImgPipeline
+        from .pipeline_stable_diffusion_3 import (
+            StableDiffusion3PipelineOutput,
+        )
 
 else:
     import sys
